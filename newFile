@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Prompts user for new file name
+printf "New File Name:\t"
+
+# Sets fileName as variable for input
+read fileName
+
+# Write the base file template
+echo "// $fileName Component
+
+// Asset Imports
+
+// Script Imports
+
+// Types
+type ${fileName}Props = {
+    prop: type;
+    prop: type;
+};
+
+// Returns a $fileName Component
+export function $fileName({}: ${fileName}Props) {
+    // Define Hook
+    return (
+    );
+}" > "components/$fileName.tsx"
+
+# Opens new file with vi
+vi "components/$fileName.tsx"
