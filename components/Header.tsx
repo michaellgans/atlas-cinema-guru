@@ -15,7 +15,7 @@ import { LogoutIcon } from "./LogoutIcon";
 export function Header() {
   // Define Hook
   return (
-    <div className="flex justify-between h-16 content-center">
+    <div className="flex h-16 items-center justify-between bg-lumi-teal">
       {/* TITLE AND ICON */}
       <div className="flex">
         <FilmIcon />
