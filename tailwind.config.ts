@@ -5,10 +5,11 @@ export default {
     extend: {
       colors: {
         'lumi-teal': '#54F4D0',
+        'lumi-navy': '#00003C',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
-      }
+      },
     }
   },
   plugins: [],
