@@ -1,7 +1,7 @@
-// FileIcon Component
+// FolderIcon Component
 
-// Returns a FileIcon Component
-export function FileIcon() {
+// Returns a FolderIcon Component
+export function FolderIcon() {
   // Define Hook
   return (
     <svg
