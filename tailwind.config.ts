@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         'lumi-teal': '#54F4D0',
+        'lumi-dark-teal': '#1DD2AF',
         'lumi-navy': '#00003C',
       },
       fontFamily: {

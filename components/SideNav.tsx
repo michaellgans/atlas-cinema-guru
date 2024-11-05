@@ -14,7 +14,7 @@
 export function SideNav() {
   // Define Hook
   return (
-    <div>
+    <div className="w-46 bg-lumi-dark-teal text-lumi-navy">
       <div>this is a test</div>
       <div>This should appear under that</div>
     </div>
