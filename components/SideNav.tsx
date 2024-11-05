@@ -1,6 +1,7 @@
 // SideNav Component
 
 // Asset Imports
+import { ActivityFeed } from "./ActivityFeed";
 import { NavBar } from "./NavBar";
 
 // Script Imports
@@ -15,10 +16,11 @@ import { NavBar } from "./NavBar";
 export function SideNav() {
   // Define Hook
   return (
-    <div className="w-46 bg-lumi-dark-teal text-lumi-navy">
+    <div className="flex w-64 flex-col bg-lumi-dark-teal text-lumi-navy">
       <NavBar />
-      <div>this is a test</div>
-      <div>This should appear under that</div>
+      <div className="flex justify-center">
+        <ActivityFeed />
+      </div>
     </div>
   );
 }
