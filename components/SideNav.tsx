@@ -5,14 +5,18 @@
 // Script Imports
 
 // Types
-type SideNavProps = {
-    prop: type;
-    prop: type;
-};
+// type SideNavProps = {
+//     prop: type;
+//     prop: type;
+// };
 
 // Returns a SideNav Component
-export function SideNav({}: SideNavProps) {
-    // Define Hook
-    return (
-    );
+export function SideNav() {
+  // Define Hook
+  return (
+    <div>
+      <div>this is a test</div>
+      <div>This should appear under that</div>
+    </div>
+  );
 }
