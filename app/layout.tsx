@@ -26,7 +26,7 @@ export default function RootLayout({ children }: Props) {
         {/* HEADER */}
         <Header />
         {/* SIDE NAV & HOME PAGE */}
-        <div>
+        <div className="flex flex-row">
           {/* SIDE NAV */}
           <SideNav />
           {children}
