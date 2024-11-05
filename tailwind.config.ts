@@ -5,6 +5,9 @@ export default {
     extend: {
       colors: {
         'lumi-teal': '#54F4D0',
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
       }
     }
   },
