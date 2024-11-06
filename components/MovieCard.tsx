@@ -22,8 +22,8 @@ export function MovieCard({ title, date, description, genre }: MovieCardProps) {
   // Define Hook
   return (
     // MOVIE CARD
-    <div className="relative flex h-[400px] w-[400px] flex-col rounded-lg border-2 border-lumi-teal">
-      <div className="absolute -z-10">
+    <div className="group relative flex h-[400px] w-[400px] flex-col overflow-hidden rounded-lg border-2 border-lumi-teal">
+      <div className="absolute -inset-1 -z-10">
         <Image
           src={placeholder}
           alt={`The cover of the movie ${title}`}
@@ -37,7 +37,7 @@ export function MovieCard({ title, date, description, genre }: MovieCardProps) {
         <ClockIcon />
       </div>
       <div className="flex-grow"></div>
-      <div className="flex h-[148px] w-full flex-col justify-evenly rounded-b-lg bg-lumi-navy2 p-4">
+      <div className="flex h-[148px] w-full translate-y-full transform flex-col justify-evenly rounded-b-lg bg-lumi-navy2 p-4 transition-transform duration-300 group-hover:translate-y-0">
         <p className="text-lg">
           {title} ({date})
         </p>
