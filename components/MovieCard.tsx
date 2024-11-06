@@ -22,7 +22,7 @@ export function MovieCard({ title, date, description, genre }: MovieCardProps) {
   // Define Hook
   return (
     // MOVIE CARD
-    <div className="group relative flex h-[400px] w-[400px] flex-col overflow-hidden rounded-lg border-2 border-lumi-teal">
+    <div className="group relative mb-14 flex h-[400px] w-[400px] flex-col overflow-hidden rounded-lg border-2 border-lumi-teal">
       <div className="absolute -inset-1 -z-10">
         <Image
           src={placeholder}

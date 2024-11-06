@@ -49,7 +49,12 @@ export default async function Page() {
         </div>
       </div>
       {/* MOVIE CARDS CONTAINER */}
-      <div className="flex justify-center">
+      <div className="flex flex-wrap justify-evenly">
+        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
+        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
+        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
+        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
+        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
         <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
       </div>
     </div>
