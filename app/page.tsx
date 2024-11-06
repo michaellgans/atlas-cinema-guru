@@ -1,8 +1,9 @@
 import { GenreButton } from "@/components/GenreButton";
+import { MovieCard } from "@/components/MovieCard";
 
 export default async function Page() {
   return (
-    <div className="flex h-screen w-full">
+    <div className="flex h-screen w-full flex-col">
       {/* FILTERS */}
       <div className="flex justify-between w-full py-12 px-11">
         {/* SEARCH/MIN/MAX */}
@@ -46,6 +47,10 @@ export default async function Page() {
             </div>
           </div>
         </div>
+      </div>
+      {/* MOVIE CARDS CONTAINER */}
+      <div className="flex justify-center">
+        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
       </div>
     </div>
   );

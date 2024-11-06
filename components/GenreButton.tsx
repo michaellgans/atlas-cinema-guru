@@ -7,13 +7,16 @@
 // Types
 type GenreButtonProps = {
   genre: string;
+  className?: string;
 };
 
 // Returns a GenreButton Component
-export function GenreButton({ genre }: GenreButtonProps) {
+export function GenreButton({ genre, className }: GenreButtonProps) {
   // Define Hook
   return (
-    <button className="h-9 rounded-full border-2 border-lumi-teal px-3 hover:bg-lumi-teal hover:text-lumi-navy active:bg-lumi-dark-teal">
+    <button
+      className={`h-9 rounded-full border-2 border-lumi-teal px-3 hover:bg-lumi-teal hover:text-lumi-navy active:bg-lumi-dark-teal ${className || ""}`}
+    >
       {genre}
     </button>
   );
