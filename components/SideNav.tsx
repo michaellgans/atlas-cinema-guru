@@ -16,9 +16,9 @@ import { NavBar } from "./NavBar";
 export function SideNav() {
   // Define Hook
   return (
-    <div className="flex w-64 flex-col bg-lumi-dark-teal text-lumi-navy">
+    <div className="duration-400 group flex w-24 flex-col overflow-hidden bg-lumi-dark-teal text-lumi-navy transition-all hover:w-64">
       <NavBar />
-      <div className="flex justify-center">
+      <div className="hidden justify-center group-hover:flex">
         <ActivityFeed />
       </div>
     </div>
