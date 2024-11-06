@@ -44,4 +44,10 @@ export interface ActivitiesTable {
   activity: "FAVORITED" | "WATCH_LATER";
 }
 
-export const db = createKysely<Database>();
+const connectionString = process.env.POSTGRES_URL;
+
+if(!connectionString) {
+  throw new Error("Missing connection string");
+}
+
+export const db = createKysely<Database>({connectionString,});
