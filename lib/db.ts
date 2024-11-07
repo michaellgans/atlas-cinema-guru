@@ -12,7 +12,7 @@ export interface Database {
 export interface TitlesTable {
   id: Generated<string>;
   title: string;
-  synposis: string;
+  synopsis: string;
   released: number;
   genre: string;
 }
@@ -44,10 +44,4 @@ export interface ActivitiesTable {
   activity: "FAVORITED" | "WATCH_LATER";
 }
 
-const connectionString = process.env.POSTGRES_URL;
-
-if(!connectionString) {
-  throw new Error("Missing connection string");
-}
-
-export const db = createKysely<Database>({connectionString,});
+export const db = createKysely<Database>();

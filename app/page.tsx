@@ -5,7 +5,6 @@
 import { GenreButton } from "@/components/GenreButton";
 import { MovieCard } from "@/components/MovieCard";
 import { useEffect, useState } from "react";
-import { fetchTitles } from "@/lib/data";
 
 // Types
 type Movie = {
@@ -16,11 +15,10 @@ type Movie = {
   title: string;
   released: number;
   genre: string;
-  // Need to find misspelling
-  synposis: string;
+  synopsis: string;
 };
 
-export default async function Page() {
+export default function Page() {
   // Hooks
   const [movies, setMovies] = useState<Movie[]>([]);
   const [searchInput, setSearchInput] = useState("");
@@ -31,27 +29,24 @@ export default async function Page() {
 
   const userEmail = "michaellgans@hotamail.com";
 
-  // Pull All Movies
-  const pullAllMovies = async () => {
-    try {
-      const genres = selectedGenres.length ? selectedGenres : ["Romance", "Horror", "Thriller"];
-      const fetchedMovies = await fetchTitles(
-        currentPage,
-        minYear,
-        maxYear,
-        searchInput,
-        genres,
-        userEmail
-      );
-      setMovies(fetchedMovies);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  // Pull all movies
   useEffect(() => {
+    const pullAllMovies = async () => {
+      try {
+        const response = await fetch("/api/titles?page=1&minYear=2000&maxYear=2024&genres=Drama,Action");
+        if (!response.ok) {
+          throw new Error("Failed to fetch movies");
+        }
+        const data = await response.json();
+        setMovies(data.title);
+        console.log(movies.length);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     pullAllMovies();
-  }, [searchInput, minYear, maxYear, selectedGenres, currentPage]);
+  }, []);
 
   return (
     <div className="flex h-screen w-full flex-col">
@@ -125,7 +120,7 @@ export default async function Page() {
               key={movie.id}
               title={movie.title}
               date={movie.released}
-              description={movie.description || "No description yet!"}
+              description={movie.synopsis || "No description yet!"}
               genre={movie.genre}
               image={movie.image}
             />

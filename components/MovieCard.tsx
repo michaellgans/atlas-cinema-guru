@@ -12,13 +12,20 @@ import Image from "next/image";
 // Types
 type MovieCardProps = {
   title: string;
-  date: string;
+  date: number;
   description: string;
   genre: string;
+  image: string;
 };
 
 // Returns a MovieCard Component
-export function MovieCard({ title, date, description, genre }: MovieCardProps) {
+export function MovieCard({
+  title,
+  date,
+  description,
+  genre,
+  image,
+}: MovieCardProps) {
   // Define Hook
   return (
     // MOVIE CARD
