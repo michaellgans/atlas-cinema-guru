@@ -30,6 +30,7 @@ export function MovieCard({
 }: MovieCardProps) {
   // Define Hook
   const [isFavorited, setIsFavorited] = useState(false);
+  const [isWatchLater, setIsWatchLater] = useState(false);
 
   // Adds movie to favorites
   const handleFavorite = async () => {
@@ -60,6 +61,41 @@ export function MovieCard({
     }
   };
 
+  // Adds movie to Watch Laters
+  const handleWatchLaters = async () => {
+    if (!id) {
+      console.error("Movie ID is undefined");
+      return;
+    }
+
+    try {
+      console.log("The ClockIcon has been clicked");
+      const method = isWatchLater ? "DELETE" : "POST";
+      console.log(method);
+      const response = await fetch(`/api/watch-later/${id}`, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        console.log("Response Status:", response.status);
+        const errorMessage = await response.text();
+        console.error("Could not add to watch later:", errorMessage);
+      }
+
+      if (response.ok) {
+        setIsWatchLater((prev) => !prev);
+      } else {
+        const errorMessage = await response.text();
+        console.error("Could not add to watch later:", errorMessage);
+      }
+    } catch (error) {
+      console.error("Watch Later Error", error);
+    }
+  };
+
   return (
     // MOVIE CARD
     <div className="group relative mb-14 flex h-[400px] w-[400px] flex-col overflow-hidden rounded-lg border-2 border-lumi-teal">
@@ -79,7 +115,10 @@ export function MovieCard({
             className={`cursor-pointer ${isFavorited ? "text-lumi-teal" : "text-white"}`}
           />
         </div>
-        <ClockIcon />
+        <ClockIcon
+          onClick={handleWatchLaters}
+          className={`cursor-pointer ${isWatchLater ? "text-lumi-teal" : "text-white"}`}
+        />
       </div>
       <div className="flex-grow"></div>
       <div className="flex h-[148px] w-full translate-y-full transform flex-col justify-evenly rounded-b-lg bg-lumi-navy2 p-4 transition-transform duration-300 group-hover:translate-y-0">
