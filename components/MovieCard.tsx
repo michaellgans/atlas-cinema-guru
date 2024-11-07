@@ -4,13 +4,14 @@
 import { ClockIcon } from "./ClockIcon";
 import { GenreButton } from "./GenreButton";
 import { StarIcon } from "./StarIcon";
-import placeholder from "../assets/placeholder.svg";
 import Image from "next/image";
+import { useState } from "react";
 
 // Script Imports
 
 // Types
 type MovieCardProps = {
+  id: string;
   title: string;
   date: number;
   description: string;
@@ -20,6 +21,7 @@ type MovieCardProps = {
 
 // Returns a MovieCard Component
 export function MovieCard({
+  id,
   title,
   date,
   description,
@@ -27,6 +29,37 @@ export function MovieCard({
   image,
 }: MovieCardProps) {
   // Define Hook
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  // Adds movie to favorites
+  const handleFavorite = async () => {
+    if (!id) {
+      console.error("Movie ID is undefined");
+      return;
+    }
+
+    try {
+      console.log("The Star has been clicked");
+      const method = isFavorited ? "DELETE" : "POST";
+      console.log(method);
+      const response = await fetch(`/api/favorites/${id}`, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setIsFavorited((prev) => !prev);
+      } else {
+        const errorMessage = await response.text();
+        console.error("Could not add to favorites:", errorMessage);
+      }
+    } catch (error) {
+      console.error("Favorite Error", error);
+    }
+  };
+
   return (
     // MOVIE CARD
     <div className="group relative mb-14 flex h-[400px] w-[400px] flex-col overflow-hidden rounded-lg border-2 border-lumi-teal">
@@ -41,7 +74,10 @@ export function MovieCard({
       </div>
       <div className="flex justify-end p-4">
         <div className="pr-3">
-          <StarIcon />
+          <StarIcon
+            onClick={handleFavorite}
+            className={`cursor-pointer ${isFavorited ? "text-lumi-teal" : "text-white"}`}
+          />
         </div>
         <ClockIcon />
       </div>

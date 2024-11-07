@@ -1,14 +1,21 @@
 // StarIcon Component
 
+// Types
+type StarIconProps = {
+  className?: string;
+  onClick: () => void;
+};
+
 // Returns a StarIcon Component
-export function StarIcon() {
+export function StarIcon({ className, onClick }: StarIconProps) {
   // Define Hook
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="size-6"
+      className={`size-6 ${className}`}
+      onClick={onClick}
     >
       <path
         fillRule="evenodd"

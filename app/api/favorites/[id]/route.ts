@@ -8,8 +8,15 @@ import { auth } from "@/auth";
 export const POST = auth(
   //@ts-ignore
   async (req: NextRequest, { params }: { params: { id: string } }) => {
-    const { id } = params;
+    const id = params?.id;
 
+    if (!id) {
+      return NextResponse.json(
+        { error: "Movie ID is required" },
+        { status: 400 }
+      );
+    }
+    
     //@ts-ignore
     if (!req.auth) {
       return NextResponse.json(
