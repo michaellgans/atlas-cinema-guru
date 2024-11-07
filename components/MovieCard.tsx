@@ -70,7 +70,7 @@ export function MovieCard({
 
     try {
       console.log("The ClockIcon has been clicked");
-      const method = isWatchLater ? "DELETE" : "POST";
+      const method = isWatchLater ? "DELETE" : "GET";
       console.log(method);
       const response = await fetch(`/api/watch-later/${id}`, {
         method,

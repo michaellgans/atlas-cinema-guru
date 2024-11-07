@@ -33,6 +33,29 @@ export const GET = auth(
   }
 );
 
+// export const POST = auth(
+//   async (req: NextRequest, { params }: { params: { id: string } }) => {
+//     const { id } = params;
+
+//     if (!req.auth) {
+//       return NextResponse.json(
+//         { error: "Unauthorized - Not logged in"},
+//         { status: 401 }
+//       );
+//     }
+
+//     const { user: { email } } = req.auth;
+
+//     const exists = await watchLaterExists(id, email);
+//     if (exists) {
+//       return NextResponse.json({ message: "Movie already in Watch Later" }, { status: 409 });
+//     }
+
+//     await insertWatchLater(id, email);
+//     return NextResponse.json({ message: "added to Watch Later" });
+//   }
+// )
+
 export const DELETE = auth(
   //@ts-ignore
   async (req: NextRequest, { params }: { params: { id: string } }) => {
