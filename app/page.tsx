@@ -49,7 +49,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="flex h-screen w-full flex-col">
+    <div className="flex w-full flex-col">
       {/* FILTERS */}
       <div className="flex justify-between w-full py-12 px-11">
         {/* SEARCH/MIN/MAX */}
