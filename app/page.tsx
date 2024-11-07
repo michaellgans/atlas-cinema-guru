@@ -22,8 +22,8 @@ export default function Page() {
   // Hooks
   const [movies, setMovies] = useState<Movie[]>([]);
   const [searchInput, setSearchInput] = useState("");
-  const [minYear, setMinYear] = useState(0);
-  const [maxYear, setMaxYear] = useState(0);
+  const [minYear, setMinYear] = useState();
+  const [maxYear, setMaxYear] = useState();
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -33,7 +33,7 @@ export default function Page() {
   useEffect(() => {
     const pullAllMovies = async () => {
       try {
-        const response = await fetch("/api/titles?page=1&minYear=2000&maxYear=2024&genres=Drama,Action");
+        const response = await fetch("/api/titles?page=1&minYear=2000&maxYear=2024&genres=Romance,Horror,Drama,Action,Mystery,Fantasy,Thriller,Western,Sci-Fi,Adventure");
         if (!response.ok) {
           throw new Error("Failed to fetch movies");
         }
@@ -126,7 +126,7 @@ export default function Page() {
             />
           ))
         ) : (
-          <h1>No Movies Found :(</h1>
+          <h1>Loading!</h1>
         )}
 
         {/* DUMMY CARDS */}

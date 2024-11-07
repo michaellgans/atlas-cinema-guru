@@ -32,8 +32,10 @@ export function MovieCard({
     <div className="group relative mb-14 flex h-[400px] w-[400px] flex-col overflow-hidden rounded-lg border-2 border-lumi-teal">
       <div className="absolute -inset-1 -z-10">
         <Image
-          src={placeholder}
+          src={image}
           alt={`The cover of the movie ${title}`}
+          width={400}
+          height={400}
           className="h-full w-full rounded-lg object-cover"
         />
       </div>
@@ -50,7 +52,11 @@ export function MovieCard({
         </p>
         <p className="pb-2">{description}</p>
         <div className="flex justify-start">
-          <GenreButton genre={genre} className="w-auto bg-lumi-dark-teal" />
+          <GenreButton
+            genre={genre}
+            className="pointer-events-none w-auto bg-lumi-dark-teal"
+            onClick={() => {}}
+          />
         </div>
       </div>
     </div>
