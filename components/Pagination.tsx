@@ -31,14 +31,14 @@ export function Pagination({
       <button
         onClick={handlePrevPage}
         disabled={currentPage === 1}
-        className="text-poppins mr-3 w-32 rounded-l-full bg-lumi-teal p-4 text-lumi-navy"
+        className="text-poppins mr-3 w-32 rounded-l-full bg-lumi-teal p-4 text-lumi-navy hover:bg-lumi-dark-teal"
       >
         Previous
       </button>
       <button
         onClick={handleNextPage}
         disabled={currentPage === 9}
-        className="text-poppins w-32 rounded-r-full bg-lumi-teal p-4 text-lumi-navy"
+        className="text-poppins w-32 rounded-r-full bg-lumi-teal p-4 text-lumi-navy hover:bg-lumi-dark-teal"
       >
         Next
       </button>
