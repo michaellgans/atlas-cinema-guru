@@ -4,6 +4,7 @@
 // Imports
 import { MovieCard } from "@/components/MovieCard";
 import { useEffect, useState } from "react";
+import { Pagination } from "@/components/Pagination";
 
 // Types
 type Movie = {
@@ -69,6 +70,9 @@ export default function Page() {
         ) : (
           <h1>Loading!</h1>
         )}
+      </div>
+      <div className="flex justify-center pb-9">
+        <Pagination />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@
 // Imports
 import { GenreButton } from "@/components/GenreButton";
 import { MovieCard } from "@/components/MovieCard";
+import { Pagination } from "@/components/Pagination";
 import { useEffect, useState } from "react";
 
 // Types
@@ -129,14 +130,9 @@ export default function Page() {
         ) : (
           <h1>Loading!</h1>
         )}
-
-        {/* DUMMY CARDS */}
-        {/* <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
-        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
-        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
-        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
-        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" />
-        <MovieCard title="Gone with the Wind" date="2045" description="It's pretty good..." genre="Romance" /> */}
+      </div>
+      <div className="flex justify-center pb-9">
+        <Pagination />
       </div>
     </div>
   );
