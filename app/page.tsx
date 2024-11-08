@@ -23,8 +23,8 @@ export default function Page() {
   // Hooks
   const [movies, setMovies] = useState<Movie[]>([]);
   const [searchInput, setSearchInput] = useState("");
-  const [minYear, setMinYear] = useState();
-  const [maxYear, setMaxYear] = useState();
+  const [minYear, setMinYear] = useState("");
+  const [maxYear, setMaxYear] = useState("");
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -46,10 +46,10 @@ export default function Page() {
       }
 
       if (minYear) {
-        params.append("minYear", minYear.toString());
+        params.append("minYear", parseInt(minYear).toString());
       }
       if (maxYear) {
-        params.append("maxYear", maxYear.toString());
+        params.append("maxYear", parseInt(maxYear).toString());
       }
 
       const response = await fetch(`/api/titles?${params.toString()}`);
@@ -112,7 +112,7 @@ export default function Page() {
                 className="border-2 focus:ring-1 focus:outline-none focus:ring-lumi-dark-teal m-1 py-1 px-2 rounded-full border-lumi-teal bg-lumi-navy2"
                 placeholder="ex. 1990"
                 value={minYear}
-                onChange={(event) => setMinYear(Number(event.target.value))}
+                onChange={(event) => setMinYear(event.target.value)}
               />
             </div>
             <div>
@@ -124,7 +124,7 @@ export default function Page() {
                 className="border-2 focus:ring-1 focus:outline-none focus:ring-lumi-dark-teal m-1 py-1 px-2 rounded-full border-lumi-teal bg-lumi-navy2" 
                 placeholder="ex. 2024"
                 value={maxYear}
-                onChange={(event) => setMaxYear(Number(event.target.value))}
+                onChange={(event) => setMaxYear(event.target.value)}
               />
             </div>
           </div>
