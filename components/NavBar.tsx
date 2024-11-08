@@ -1,9 +1,11 @@
 // NavBar Component
+"use client";
 
 // Asset Imports
 import { ClockIcon } from "./ClockIcon";
 import { FolderIcon } from "./FolderIcon";
 import { StarIcon } from "./StarIcon";
+import Link from "next/link";
 
 // Script Imports
 
@@ -19,18 +21,18 @@ export function NavBar() {
   return (
     // NAV CONTAINER
     <div className="flex flex-col p-7 font-poppins text-white">
-      <div className="flex">
+      <Link href="/" className="flex">
         <FolderIcon />
         <p className="hidden pl-2 group-hover:block">Home</p>
-      </div>
-      <div className="flex py-6">
-        <StarIcon />
+      </Link>
+      <Link href="/favorites" className="flex py-6">
+        <StarIcon onClick={() => {}} />
         <p className="hidden pl-2 group-hover:block">Favorites</p>
-      </div>
-      <div className="flex">
-        <ClockIcon />
+      </Link>
+      <Link href="/watch-later" className="flex">
+        <ClockIcon onClick={() => {}} />
         <p className="hidden pl-2 group-hover:block">Watch Later</p>
-      </div>
+      </Link>
     </div>
   );
 }
