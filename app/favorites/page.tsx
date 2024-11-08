@@ -50,6 +50,8 @@ export default function Page() {
 
   return (
     <div className="flex w-full flex-col">
+      <h2 className="flex justify-center py-14 font-black font-poppins text-6xl">Favorites</h2>
+
       {/* MOVIE CARDS CONTAINER */}
       <div className="flex flex-wrap justify-evenly">
         {favorites.length > 0 ? (
