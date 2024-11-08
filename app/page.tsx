@@ -134,18 +134,18 @@ export default function Page() {
           <h5>Genres</h5>
           <div className="flex flex-col p-1">
             <div className="m-1">
-              <GenreButton genre="Romance" onClick={() => setSelectedGenres([...selectedGenres, "Romance"])} />
-              <GenreButton genre="Horror" onClick={() => setSelectedGenres([...selectedGenres, "Horror"])}/>
-              <GenreButton genre="Drama" onClick={() => setSelectedGenres([...selectedGenres, "Drama"])}/>
-              <GenreButton genre="Action"  onClick={() => setSelectedGenres([...selectedGenres, "Action"])}/>
-              <GenreButton genre="Mystery"  onClick={() => setSelectedGenres([...selectedGenres, "Mystery"])}/>
+              <GenreButton className={`${selectedGenres.includes("Romance") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Romance" onClick={() => setSelectedGenres([...selectedGenres, "Romance"])} />
+              <GenreButton className={`${selectedGenres.includes("Horror") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Horror" onClick={() => setSelectedGenres([...selectedGenres, "Horror"])}/>
+              <GenreButton className={`${selectedGenres.includes("Drama") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Drama" onClick={() => setSelectedGenres([...selectedGenres, "Drama"])}/>
+              <GenreButton className={`${selectedGenres.includes("Action") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Action"  onClick={() => setSelectedGenres([...selectedGenres, "Action"])}/>
+              <GenreButton className={`${selectedGenres.includes("Mystery") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Mystery"  onClick={() => setSelectedGenres([...selectedGenres, "Mystery"])}/>
             </div>
             <div className="m-1">
-              <GenreButton genre="Fantasy"  onClick={() => setSelectedGenres([...selectedGenres, "Fantasy"])}/>
-              <GenreButton genre="Thriller"  onClick={() => setSelectedGenres([...selectedGenres, "Thriller"])}/>
-              <GenreButton genre="Western"  onClick={() => setSelectedGenres([...selectedGenres, "Western"])}/>
-              <GenreButton genre="Sci-Fi"  onClick={() => setSelectedGenres([...selectedGenres, "Sci-Fi"])}/>
-              <GenreButton genre="Adventure"  onClick={() => setSelectedGenres([...selectedGenres, "Adventure"])}/>
+              <GenreButton className={`${selectedGenres.includes("Fantasy") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Fantasy"  onClick={() => setSelectedGenres([...selectedGenres, "Fantasy"])}/>
+              <GenreButton className={`${selectedGenres.includes("Thriller") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Thriller"  onClick={() => setSelectedGenres([...selectedGenres, "Thriller"])}/>
+              <GenreButton className={`${selectedGenres.includes("Western") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Western"  onClick={() => setSelectedGenres([...selectedGenres, "Western"])}/>
+              <GenreButton className={`${selectedGenres.includes("Sci-Fi") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Sci-Fi"  onClick={() => setSelectedGenres([...selectedGenres, "Sci-Fi"])}/>
+              <GenreButton className={`${selectedGenres.includes("Adventure") ? "bg-lumi-dark-teal text-white" : "bg-lumi-navy"}`} genre="Adventure"  onClick={() => setSelectedGenres([...selectedGenres, "Adventure"])}/>
             </div>
           </div>
         </div>
