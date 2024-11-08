@@ -30,24 +30,61 @@ export default function Page() {
 
   const userEmail = "michaellgans@hotamail.com";
 
-  // Pull all movies
-  useEffect(() => {
-    const pullAllMovies = async () => {
-      try {
-        const response = await fetch("/api/titles?page=1&minYear=2000&maxYear=2024&genres=Romance,Horror,Drama,Action,Mystery,Fantasy,Thriller,Western,Sci-Fi,Adventure");
-        if (!response.ok) {
-          throw new Error("Failed to fetch movies");
-        }
-        const data = await response.json();
-        setMovies(data.title);
-        console.log(movies.length);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const pullFilteredMovies = async () => {
+    try {
+      const params = new URLSearchParams();
 
-    pullAllMovies();
-  }, []);
+      const genres = selectedGenres.length
+        ? selectedGenres.join(",")
+        : "Romance,Horror,Drama,Action,Mystery,Fantasy,Thriller,Western,Sci-Fi,Adventure";
+
+      params.append("page", currentPage.toString());
+      params.append("genres", genres);
+
+      if (searchInput) {
+        params.append("query", searchInput);
+      }
+
+      if (minYear) {
+        params.append("minYear", minYear.toString());
+      }
+      if (maxYear) {
+        params.append("maxYear", maxYear.toString());
+      }
+
+      const response = await fetch(`/api/titles?${params.toString()}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch movies");
+      }
+      const data = await response.json();
+      setMovies(data.title || []);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    pullFilteredMovies();
+  }, [searchInput, minYear, maxYear, selectedGenres, currentPage]);
+
+  // // Pull all movies
+  // useEffect(() => {
+  //   const pullAllMovies = async () => {
+  //     try {
+  //       const response = await fetch("/api/titles?page=1&minYear=2000&maxYear=2024&genres=Romance,Horror,Drama,Action,Mystery,Fantasy,Thriller,Western,Sci-Fi,Adventure");
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch movies");
+  //       }
+  //       const data = await response.json();
+  //       setMovies(data.title);
+  //       console.log(movies.length);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   pullAllMovies();
+  // }, []);
 
   return (
     <div className="flex w-full flex-col">
