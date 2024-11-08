@@ -27,9 +27,10 @@ export default function Page() {
   const [maxYear, setMaxYear] = useState("");
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(9);
 
-  const userEmail = "michaellgans@hotamail.com";
-
+  // Pull filtered movies from API
+  // Will pull all movies at initial load
   const pullFilteredMovies = async () => {
     try {
       const params = new URLSearchParams();
@@ -41,10 +42,12 @@ export default function Page() {
       params.append("page", currentPage.toString());
       params.append("genres", genres);
 
+      // User's typed search input for title
       if (searchInput) {
         params.append("query", searchInput);
       }
 
+      // User's typed input for release date
       if (minYear) {
         params.append("minYear", parseInt(minYear).toString());
       }
@@ -52,12 +55,19 @@ export default function Page() {
         params.append("maxYear", parseInt(maxYear).toString());
       }
 
+      // Error handling
       const response = await fetch(`/api/titles?${params.toString()}`);
       if (!response.ok) {
         throw new Error("Failed to fetch movies");
       }
+
+      // Try to pull movies
       const data = await response.json();
+      console.log(data);
       setMovies(data.title || []);
+
+      // Pagination
+      setTotalPages(9);
     } catch (error) {
       console.error(error);
     }
@@ -169,7 +179,11 @@ export default function Page() {
         )}
       </div>
       <div className="flex justify-center pb-9">
-        <Pagination />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
     </div>
   );

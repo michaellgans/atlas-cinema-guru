@@ -1,16 +1,45 @@
 // Pagination Component
 
-// Asset Imports
+// Types
+type PaginationProps = {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+};
 
 // Returns a Pagination Component
-export function Pagination() {
-  // Define Hook
+export function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationProps) {
+  // Pagination Functions
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
   return (
     <div className="flex items-center">
-      <button className="text-poppins mr-3 w-32 rounded-l-full bg-lumi-teal p-4 text-lumi-navy">
+      <button
+        onClick={handlePrevPage}
+        disabled={currentPage === 1}
+        className="text-poppins mr-3 w-32 rounded-l-full bg-lumi-teal p-4 text-lumi-navy"
+      >
         Previous
       </button>
-      <button className="text-poppins w-32 rounded-r-full bg-lumi-teal p-4 text-lumi-navy">
+      <button
+        onClick={handleNextPage}
+        disabled={currentPage === 9}
+        className="text-poppins w-32 rounded-r-full bg-lumi-teal p-4 text-lumi-navy"
+      >
         Next
       </button>
     </div>
