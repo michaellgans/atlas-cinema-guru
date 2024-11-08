@@ -22,14 +22,13 @@ export default function Page() {
   // Hooks
   const [favorites, setFavorites] = useState<Movie[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-
-  const userEmail = "michaellgans@hotamail.com";
+  const [totalPages, setTotalPages] = useState(9);
 
   // Pull All Favorites
   useEffect(() => {
     const pullAllFavorites = async () => {
       try {
-        const response = await fetch("/api/favorites?page=1&minYear=2000&maxYear=2024&genres=Romance,Horror,Drama,Action,Mystery,Fantasy,Thriller,Western,Sci-Fi,Adventure");
+        const response = await fetch("/api/favorites?page=" + currentPage + "&minYear=2000&maxYear=2024&genres=Romance,Horror,Drama,Action,Mystery,Fantasy,Thriller,Western,Sci-Fi,Adventure");
         if (!response.ok) {
           throw new Error("Failed to fetch movies from favorites");
         }
@@ -37,6 +36,7 @@ export default function Page() {
 
         if (Array.isArray(data.favorites)) {
           setFavorites(data.favorites);
+          setTotalPages(9);
         } else {
           console.error("Unexpected data structure", data);
         }
@@ -47,7 +47,7 @@ export default function Page() {
     };
 
     pullAllFavorites();
-  }, []);
+  }, [currentPage]);
 
   return (
     <div className="flex w-full flex-col">
@@ -73,7 +73,11 @@ export default function Page() {
       </div>
 
       <div className="flex justify-center pb-9">
-        <Pagination />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
       </div>
     </div>
   );
