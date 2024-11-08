@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 // Script Imports
+import { useActivity } from "./ActivityContext";
 
 // Types
 type MovieCardProps = {
@@ -32,6 +33,8 @@ export function MovieCard({
   const [isFavorited, setIsFavorited] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
 
+  const { addActivity } = useActivity();
+
   // Adds movie to favorites
   const handleFavorite = async () => {
     if (!id) {
@@ -52,6 +55,7 @@ export function MovieCard({
 
       if (response.ok) {
         setIsFavorited((prev) => !prev);
+        addActivity({ id, title, collection: "favorites" });
       } else {
         const errorMessage = await response.text();
         console.error("Could not add to favorites:", errorMessage);
@@ -87,6 +91,7 @@ export function MovieCard({
 
       if (response.ok) {
         setIsWatchLater((prev) => !prev);
+        addActivity({ id, title, collection: "watch later" });
       } else {
         const errorMessage = await response.text();
         console.error("Could not add to watch later:", errorMessage);

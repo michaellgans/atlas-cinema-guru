@@ -8,11 +8,11 @@ import { useState, useEffect } from "react";
 type ActivityItemProps = {
   id: string;
   title: string;
-  collection: string;
+  collection: "favorites" | "watch later";
 };
 
 // Returns a ActivityItem Component
-export function ActivityItem({ id, title }: ActivityItemProps) {
+export function ActivityItem({ id, title, collection }: ActivityItemProps) {
   // Define Hook
   const [currentDate, setCurrentDate] = useState<string>("");
   const [currentTime, setCurrentTime] = useState<string>("");
@@ -37,7 +37,7 @@ export function ActivityItem({ id, title }: ActivityItemProps) {
         {currentDate}, {currentTime}
       </p>
       <p>
-        Added <span className="font-bold">{title}</span> to watch later
+        Added <span className="font-bold">{title}</span> to {collection}
       </p>
     </div>
   );
